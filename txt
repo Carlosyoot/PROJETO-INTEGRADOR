@@ -1,0 +1,8 @@
+<form action="#">
+        <h1>Cadastre-se</h1>
+        <input type="text" placeholder="Nome" required />
+        <input type="text" placeholder="CPF" required />
+        <input type="text" placeholder="Nome do Restaurante" required />
+        <a href="#" id="backToLogin">Já tem conta? Clique aqui para fazer login</a>
+        <button type="submit">Cadastrar</button>
+      </form>

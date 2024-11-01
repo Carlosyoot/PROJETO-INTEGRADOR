@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">FAÇA OS PRODUTOS DO SEU SITE</div>
+        <button id="criar-btn" class="btn">CRIAR</button>
+        <div class="listProduct">
+
+        </div>
+    </div>
+
+    <div id="myModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <h2>Adicionar Produto</h2> <form> <label for="produto">Produto:</label> <input type="text" id="produto" name="produto" required> <label for="foto">Foto:</label> <input type="file" id="foto" name="foto" required> <button type="submit" class="btn">Salvar</button> </form> </div> </div>
+    
+
+    <script>
+        //Important note: If you have downloaded the code
+        // but still encounter errors when running the program,
+         //    please watch the video at this link because
+        // I have shown you how to run the project properly.
+        // https://www.youtube.com/watch?v=okyfcpZfPAU&t=142s
+        let products = null;
+        // get datas from file json
+        fetch('products.json')
+            .then(response => response.json())
+            .then(data => {
+                products = data;
+                addDataToHTML();
+        })
+
+        function addDataToHTML(){
+    // remove datas default from HTML
+        let listProductHTML = document.querySelector('.listProduct');
+
+        // add new datas
+        if(products != null) // if has data
+        {
+            products.forEach(product => {
+                let newProduct = document.createElement('a');
+                newProduct.href = '/detail.html?id=' + product.id;
+                newProduct.classList.add('item');
+                newProduct.innerHTML = 
+                `<img src="${product.image}" alt="">
+                <h2>${product.name}</h2>
+                <div class="price">$${product.price}</div>`;
+                listProductHTML.appendChild(newProduct);
+
+            });
+        }
+    }
+
+    var modal = document.getElementById("myModal"); var btn = document.getElementById("criar-btn"); var span = document.getElementsByClassName("close")[0]; btn.onclick = function() { modal.style.display = "block"; }; span.onclick = function() { modal.style.display = "none"; } // Quando o usuário clicar fora do modal, fechar o modal window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
+
+    </script>
+</body>
+</html>

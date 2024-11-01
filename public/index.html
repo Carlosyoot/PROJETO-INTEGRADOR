@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Login</title>
+</head>
+<body>
+  <div class="container" id="container">
+    
+    <!-- Sessão de Login -->
+    <section id="login-section" class="form-section" style="display: flex;">
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h1>Efetue login</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fas fa-archive"></i><span>CNPJ</span></a>
+          </div>
+          <span>Ou</span>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fas fa-person"></i><span>CPF</span></a>
+          </div>
+          <a href="#" id="goToRegister">Não tem conta? Clique aqui para criar</a>
+        </form>
+      </div>
+      <div class="overlay-container">
+        
+      </div>
+    </section>
+
+    <!-- Sessão de LOGIN SELECIONADO -->
+    <section id="login-section-true" class="form-section" style="display: none;">
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h1>Efetue login</h1>
+          <p class="p-2">Digite seu CPF/CNPJ</p>
+          <input class="signbtn"type="text" placeholder="CPF/CNPJ" required style="border-radius: 20px;" />
+          <div class="password-container"> 
+          <input type="password" id="password" placeholder="Senha" required /><span class="toggle-password" onclick="togglePasswordVisibility()"> <i class="fas fa-eye"></i> </span> 
+          </div>
+          <button type="submit" id="loginForm">Entrar</button>
+          <a href="#" id="goToLogin2">Voltar</a>
+
+
+        </form>
+      </div>
+      <div class="overlay-container">
+        
+      </div>
+    </section>
+
+    <!-- Sessão de Cadastro -->
+    <section id="register-section" class="form-section" style="display: none;">
+      <div class="form-container sign-in-container">
+        <form id="register-form" action="#">
+          <h1>Você trabalha com:</h1>
+          <div class="button-container">
+            <button type="button" id="cpf-button" onclick="selectType('cpf')">CPF</button>
+            <button type="button" id="cnpj-button" onclick="selectType('cnpj')">CNPJ</button>
+          </div>
+          
+          <div class="textfield-container">
+            <p class="p-2">Digite seu CPF/CNPJ</p>
+            <input id="cpf" class="signbtn" type="text" placeholder="CPF/CNPJ" required />
+            
+            <p class="p-2">Nome da empresa</p>
+            <input id="empresa" class="signbtn" type="text" placeholder="Nome da empresa" required />
+            
+            <p class="p-2">Crie uma senha de acesso</p>
+            <div class="password-container">
+              <input type="password" id="password1" name="password" placeholder="Senha" required />
+              <span class="toggle-password" onclick="togglePasswordVisibility('password1')">
+                <i class="fas fa-eye"></i>
+              </span>
+            </div>
+            
+            <p class="p-2">Confirme sua senha</p>
+            <div class="password-container">
+              <input type="password" id="confirm-password" placeholder="Confirme sua senha" required />
+              </span>
+            </div>
+          </div>
+          
+        </form>
+      </div>
+      <div class="overlay-container-set">
+        
+        <h1>Cadastre-se</h1>
+
+        <a href="#" id="goToLogin">Já tem conta? Clique aqui para fazer login</a>
+        <button id="cadastro"  type="submit">Cadastrar</button>
+        <div id="message-container" style="display:none; background-color: #f0f0f0; padding: 10px; border-radius: 5px; margin-top: 10px;"></div> </div>
+      </div>
+    </section>
+    <div id="modalMensagem" class="modal">
+      <div class="modal-content">
+        <span id="fecharModal" class="close">&times;</span>
+        <p id="modalTexto"></p>
+      </div>
+    </div>
+  </div>
+  
+  <script src="login.js">
+  </script>
+</body>
+</html>

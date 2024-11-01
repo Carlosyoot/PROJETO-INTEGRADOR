@@ -1,0 +1,468 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #f6f5f7;
+	display: flex;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+
+h1{
+    margin-top: 15px;;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+/* Transições para os elementos #goToLogin e #goToRegister */
+#goToLogin, #goToRegister, #goToLogin2 {
+	cursor: pointer; /* Muda o cursor para pointer quando não está em hover */
+	transition: font-size 0.3s ease, font-weight 0.3s ease; /* Adiciona a transição */
+  }
+  
+  /* Estilos em hover para #goToLogin */
+  #goToLogin:hover {
+	cursor: grabbing; /* Muda o cursor para grabbing em hover */
+	font-size: 16px; /* Define o tamanho da fonte no hover */
+	font-weight: bold; /* Torna a fonte em negrito no hover */
+  }
+  
+  #goToLogin2:hover {
+	cursor: grabbing; /* Muda o cursor para grabbing em hover */
+	font-size: 16px; /* Define o tamanho da fonte no hover */
+	font-weight: bold; /* Torna a fonte em negrito no hover */
+  }
+
+  /* Estilos em hover para #goToRegister */
+  #goToRegister:hover {
+	cursor: grabbing; /* Muda o cursor para grabbing em hover */
+	font-size: 16px; /* Define o tamanho da fonte no hover */
+	font-weight: bold; /* Torna a fonte em negrito no hover */
+  }
+  
+
+span {
+	font-size: 12px;
+}
+
+a {
+	color: #4e4747;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #58504f;
+	background-color: #2e2d2d;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+	cursor: pointer;
+}
+
+button.ghost:hover{
+	background-color: #000000;
+}
+
+
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+}
+
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+	transform: translateX(100%);
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+	background: url('fundo.jpg') no-repeat center center;
+	background-size: cover; /* Imagem de fundo com cobertura total */
+  }
+  
+  .overlay-container::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
+	z-index: 1; /* Garanta que o overlay fique atrás do conteúdo */
+  }
+  
+  .overlay-container::after {
+	content: url('EAT.png');
+	position: absolute;
+	top: 50%;
+	height: auto;
+	left: 10%;
+	transform: translate(-50%, -50%);
+	width: 50%; /* ajuste conforme necessário */
+	opacity: 0.8; /* ajuste a opacidade conforme necessário */
+	z-index: 2; /* Coloca a imagem sobreposta acima da sobreposição */
+  }
+  
+
+
+  
+  .overlay-container-set {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+	background: url('fundo.jpg') no-repeat center center;
+	background-size: cover; /* Adiciona a imagem de fundo com cobertura total */
+  }
+  
+  .overlay-container-set::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
+	z-index: 1; /* Garanta que o overlay fique atrás do conteúdo */
+  }
+  
+  .overlay-container-set h1,
+  .overlay-container-set a,
+  .overlay-container-set button {
+	position: relative;
+	z-index: 2; /* Garanta que o conteúdo fique à frente do overlay */
+	color: white; /* Ajuste a cor do texto para visibilidade */
+  }
+  
+
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+.overlay {
+	background: -webkit-linear-gradient(to right, #ffffff, #ffffff);
+	background: linear-gradient(to right, #327056, #67ff02);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+	transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}
+
+.social-container {
+	margin: 20px 0;
+    display: flex;
+    width: 100%;
+    height: 45px;
+
+}
+
+.social-container a {
+    border: 1px solid #000000;
+    display: flex;
+    border-radius: 12px;
+    justify-content: center; /* Alinhar ao início (esquerda) */
+    align-items: center;
+    margin: 0 5px;
+    height: 100%;
+    width: 100%;
+    padding-left: 10px; /* Adicione um padding à esquerda para o ícone */
+}
+
+.social-container i {
+    margin-right: 10px; /* Adiciona espaço entre o ícone e o texto */
+}
+
+.social-container a:hover{
+	background: linear-gradient(to right, #293630, #254e09);
+    color: #fff;
+    border-color: #fff;
+}
+
+
+#loginForm:hover{
+
+	background-color: #2b5268;
+	cursor: pointer;
+}
+
+#cadastro:hover{
+	background: linear-gradient(to right, #293630, #254e09);
+	border-color: white;
+}
+
+
+  .button-container {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	margin-bottom: 10px;
+  }
+  
+  .textfield-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.signbtn {
+		width: 100%;
+		border-radius: 20px;
+		margin-bottom: 10px; /* Adicionei margens para ajustar a distância */
+	  }
+	  
+  }
+  
+  
+  .p-2{
+	margin: 0;
+	padding: 5px;	
+	align-self: flex-start; /* Alinha o parágrafo à esquerda */
+	margin-left: 0px;
+  }  
+  
+  
+  
+  
+  .button-container button:hover {
+	background-color: #4CAF50;
+	color: white;
+	border-color: #39833b;
+  }
+  
+  .button-container button:disabled {
+	background-color: #91ce97;
+	cursor: not-allowed;
+  }
+  
+  
+
+  .password-container {
+	position: relative;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 5px;
+  }
+  
+  .password-container input {
+	width: 100%;
+	border-radius: 20px;
+	padding-right: 40px; /* espaço para o ícone */
+  }
+  
+  .password-container .toggle-password {
+	position: absolute;
+	right: 10px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	color: #333;
+  }
+  
+  .toggle-password i {
+	font-size: 18px;
+	margin-top: 18px;
+	
+  }
+
+  .toggle-password-true i {
+	font-size: 18px;
+	position: absolute;
+	left: 78%;
+	top: 53%;
+  }
+
+  .toggle-password-true{
+	margin-bottom: 15px;
+  }
+  
+  .modal {
+	display: none; /* Oculta o modal por padrão */
+	position: fixed;
+	z-index: 100;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+	background-color: #fff;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 400px;
+	text-align: center;
+	border-radius: 8px;
+  }
+  
+  .close {
+	color: #aaa;
+	float: right;
+	font-size: 24px;
+	font-weight: bold;
+	cursor: pointer;
+  }

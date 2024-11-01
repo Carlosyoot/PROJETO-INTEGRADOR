@@ -1,0 +1,16 @@
+{
+  "name": "minha-aplicacao-electron",
+  "version": "1.0.0",
+  "description": "Aplicação Electron com servidor Express embutido",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron-reload": "^2.0.0-alpha.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "electron": "^24.0.0"
+  }
+}
