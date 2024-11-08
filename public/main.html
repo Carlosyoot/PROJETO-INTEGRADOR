@@ -223,20 +223,36 @@ document.getElementById("addProductForm").onsubmit = function(event) {
 
         function adicionarProduto() {
             // Pega os valores dos campos
-            const nomeProduto = document.getElementById("productName").value;
-            const precoProduto = document.getElementById("productPrice").value;
-            const fotoProduto = document.getElementById("productImage").files[0];
+    
 
-            // Verifica se todos os campos estão preenchidos
-            if (nomeProduto && precoProduto && fotoProduto) {
-                alert("Um novo produto foi adicionado ao site do restaurante:\n" +
-                      "Nome: " + nomeProduto + "\n" +
-                      "Preço: " + precoProduto + "\n" +
-                      "Imagem: " + fotoProduto.name);
-            } else {
-                alert("Por favor, preencha todos os campos antes de salvar o produto.");
-            }
-        }
+    document.getElementById('saveProductBtn').addEventListener('click', () => {
+    const nomeProduto = document.getElementById("productName").value;
+    const precoProduto = document.getElementById("productPrice").value;
+    const imagemProduto = document.getElementById("productImage").files[0];
+
+    if (!nomeProduto || !precoProduto || !imagemProduto) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    // Lê o arquivo da imagem
+    const reader = new FileReader();
+    reader.onload = () => {
+        const imagemBase64 = reader.result;
+
+        const novoProduto = {
+            id: 3,
+            name: nomeProduto,
+            price: precoProduto,
+            image: imagemProduto.name, // nome do arquivo para salvar em /public/img/
+            description: "qualquer coisa"
+        };
+
+        // Envia os dados ao processo principal para salvar o produto
+        ipcRenderer.send('save-product', novoProduto, imagemBase64);
+    };
+    reader.readAsDataURL(imagemProduto);
+});};
 
     </script>
 
