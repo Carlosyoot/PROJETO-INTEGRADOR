@@ -1,8 +1,6 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('path');
-const electronReload = require('electron-reload');
 
-electronReload(__dirname, { electron: path.join(__dirname, 'node_modules', '.bin', 'electron') });
 
 let loginWindow;
 let mainWindow;
@@ -19,7 +17,6 @@ function createLoginWindow() {
     });
     Menu.setApplicationMenu(null);
     loginWindow.loadFile('public/index.html');
-    loginWindow.webContents.openDevTools();
 }
 
 // Função para criar a janela principal após o login
