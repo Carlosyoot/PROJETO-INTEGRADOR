@@ -41,7 +41,7 @@
                 <label for="productImage">Foto do Produto:</label>
                 <input type="file" id="productImage" name="productImage" accept="image/*" required>
 
-                <button type="submit" class="btn">Salvar Produto</button>
+                <button type="button" class="btn" onclick="adicionarProduto()">Salvar Produto</button>
             </form>
         </div>
     </div>
@@ -220,6 +220,23 @@ document.getElementById("addProductForm").onsubmit = function(event) {
         reader.readAsDataURL(productImage);
     }
 };
+
+        function adicionarProduto() {
+            // Pega os valores dos campos
+            const nomeProduto = document.getElementById("productName").value;
+            const precoProduto = document.getElementById("productPrice").value;
+            const fotoProduto = document.getElementById("productImage").files[0];
+
+            // Verifica se todos os campos estão preenchidos
+            if (nomeProduto && precoProduto && fotoProduto) {
+                alert("Um novo produto foi adicionado ao site do restaurante:\n" +
+                      "Nome: " + nomeProduto + "\n" +
+                      "Preço: " + precoProduto + "\n" +
+                      "Imagem: " + fotoProduto.name);
+            } else {
+                alert("Por favor, preencha todos os campos antes de salvar o produto.");
+            }
+        }
 
     </script>
 
