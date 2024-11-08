@@ -213,3 +213,164 @@ a{
     cursor: pointer;
   }
   
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+}
+
+.mobile-view {
+    width: 300px;
+    height: 600px;
+    border: 15px solid #333;
+    border-radius: 20px;
+    margin: 20px auto;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    position: relative;
+}
+
+.mobile-view .content {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color: #666;
+    justify-content: center;
+    flex-grow: 1;
+    overflow-y: none;
+    padding-bottom: 50px; /* espaço para o rodapé */
+}
+
+.section-box {
+    width: 90%;
+    height: 100px;
+    border: 2px dashed #aaa;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+}
+
+.section-box:hover {
+    background-color: #f0f0f0;
+}
+
+.fundo{
+    border: 1px solid black;
+    height: 80px;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 30px;
+    box-sizing: border-box;
+    background-color: #2F2F2F;
+}
+
+.fundocontent{
+    width: 100%;
+    color: rgb(223, 183, 148);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+#qrcode-container {
+    text-align: center;  /* Isso vai centralizar o conteúdo dentro do contêiner */
+    margin-top: 50px;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-code {
+    display: block;      /* Garantir que o QR Code seja exibido como bloco */
+    margin: 0;           /* Remover qualquer margem */
+    max-width: 100%;     /* Impedir que o QR Code ultrapasse o tamanho do contêiner */
+    max-height: 100%;    /* Impedir que o QR Code ultrapasse o tamanho do contêiner */
+}
+
+/* Estilo para o overlay */
+.modal {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    z-index: 1000; /* Garantir que fique acima do conteúdo */
+}
+
+/* Estilo para o conteúdo do modal */
+.modal-content {
+    position: relative;
+ 
+    background: white;
+    padding: 20px;
+    width: 300px; /* Defina a largura do modal conforme necessário */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o botão de fechar */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilo do formulário */
+#addProductForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#addProductForm label {
+    margin: 8px 0 4px;
+}
+
+#addProductForm input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#addProductForm button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addProductForm button:hover {
+    background-color: #45a049;
+}

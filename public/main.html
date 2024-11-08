@@ -7,55 +7,222 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="title">FAÇA OS PRODUTOS DO SEU SITE</div>
-        <button id="criar-btn" class="btn">CRIAR</button>
-        <div class="listProduct">
 
+    <div class="navbar">
+        <a href="#" id="criarPagina">CRIE SUA PÁGINA</a>
+        <a href="#" id="qrcode">GERAR QRCODE</a>
+        <a href="#" id="visualizePagina">VISUALIZE SUA PÁGINA</a>
+    </div>
+
+    <div class="container" id="mainContainer">
+        <div class="title">COMPONENTES CRIADOS</div>
+        <div class="listProduct">
+            <!-- Lista de produtos carregados a partir do JSON -->
         </div>
     </div>
 
-    <div id="myModal" class="modal"> <div class="modal-content"> <span class="close">&times;</span> <h2>Adicionar Produto</h2> <form> <label for="produto">Produto:</label> <input type="text" id="produto" name="produto" required> <label for="foto">Foto:</label> <input type="file" id="foto" name="foto" required> <button type="submit" class="btn">Salvar</button> </form> </div> </div>
-    
+    <div id="qrcode-container" style="text-align: center; margin-top: 50px; display: none;">
+        <h3>Seu QR Code</h3>
+        <div id="qrcode"></div>
+    </div>
+
+    <!-- Modal para adicionar produto -->
+    <div id="myModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Produto</h2>
+            <form id="addProductForm">
+                <label for="productName">Nome do Produto:</label>
+                <input type="text" id="productName" name="productName" required>
+
+                <label for="productPrice">Preço do Produto:</label>
+                <input type="text" id="productPrice" name="productPrice" required>
+
+                <label for="productImage">Foto do Produto:</label>
+                <input type="file" id="productImage" name="productImage" accept="image/*" required>
+
+                <button type="submit" class="btn">Salvar Produto</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="pageBuilder" class="mobile-view" style="display: none;">
+        <div class="content">
+            <h2>Construção de Página</h2>
+            <div class="section-box" onclick="showtudo()">
+                <p>Adicione Cabeçalho (Foto ou Vídeo)</p>
+            </div>
+            <div class="section-box" onclick="showtudo()">
+                <p>Adicione Menus de Comida</p>
+            </div>
+            <div class="section-box" onclick="showtudo()">
+                <p>Adicione Produtos</p>
+            </div>
+            <div class="fundo">
+                <div class="fundocontent">
+                    <div class="logo footer-logo">
+                        <a href="index.html">Darushi</a>
+                        <div class="footer-contact">
+                            <p>Contact Us:</p>
+                            <p>123 Main Street, City</p>
+                            <p>Phone: (12) 2456-7890</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para adicionar produto -->
+<div id="myModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Adicionar Produto</h2>
+        <form id="addProductForm">
+            <label for="productName">Nome do Produto:</label>
+            <input type="text" id="productName" name="productName" required>
+
+            <label for="productPrice">Preço do Produto:</label>
+            <input type="text" id="productPrice" name="productPrice" required>
+
+            <label for="productImage">Foto do Produto:</label>
+            <input type="file" id="productImage" name="productImage" accept="image/*" required>
+
+            <button type="submit" class="btn">Salvar Produto</button>
+        </form>
+    </div>
+</div>
 
     <script>
-        //Important note: If you have downloaded the code
-        // but still encounter errors when running the program,
-         //    please watch the video at this link because
-        // I have shown you how to run the project properly.
-        // https://www.youtube.com/watch?v=okyfcpZfPAU&t=142s
         let products = null;
-        // get datas from file json
+
         fetch('products.json')
             .then(response => response.json())
             .then(data => {
                 products = data;
                 addDataToHTML();
-        })
-
-        function addDataToHTML(){
-    // remove datas default from HTML
-        let listProductHTML = document.querySelector('.listProduct');
-
-        // add new datas
-        if(products != null) // if has data
-        {
-            products.forEach(product => {
-                let newProduct = document.createElement('a');
-                newProduct.href = '/detail.html?id=' + product.id;
-                newProduct.classList.add('item');
-                newProduct.innerHTML = 
-                `<img src="${product.image}" alt="">
-                <h2>${product.name}</h2>
-                <div class="price">$${product.price}</div>`;
-                listProductHTML.appendChild(newProduct);
-
             });
-        }
-    }
 
-    var modal = document.getElementById("myModal"); var btn = document.getElementById("criar-btn"); var span = document.getElementsByClassName("close")[0]; btn.onclick = function() { modal.style.display = "block"; }; span.onclick = function() { modal.style.display = "none"; } // Quando o usuário clicar fora do modal, fechar o modal window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
+        function addDataToHTML() {
+            let listProductHTML = document.querySelector('.listProduct');
+
+            if (products != null) {
+                products.forEach(product => {
+                    let newProduct = document.createElement('a');
+                    newProduct.href = '/detail.html?id=' + product.id;
+                    newProduct.classList.add('item');
+                    newProduct.innerHTML = `
+                        <img src="${product.image}" alt="">
+                        <h2>${product.name}</h2>
+                        <div class="price">$${product.price}</div>`;
+                    listProductHTML.appendChild(newProduct);
+                });
+            }
+        }
+
+        var modal = document.getElementById("myModal");
+
+
+        // Abertura do modal
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.getElementById("criarPagina").onclick = function() {
+            document.getElementById("mainContainer").style.display = "none";
+            document.getElementById("pageBuilder").style.display = "flex";
+            document.getElementById("qrcode-container").style.display = "none";
+        };
+
+        document.getElementById("visualizePagina").onclick = function() {
+            document.getElementById("mainContainer").style.display = "block";
+            document.getElementById("pageBuilder").style.display = "none";
+            document.getElementById("qrcode-container").style.display = "none";
+        };
+
+        document.getElementById("qrcode").onclick = function() {
+            document.getElementById("qrcode-container").style.display = "block";
+            document.getElementById("pageBuilder").style.display = "none";
+            document.getElementById("mainContainer").style.display = "none";
+
+            var qrcodeContainer = document.getElementById("qrcode-container");
+            qrcodeContainer.innerHTML = ''; // Remove o QR Code gerado anteriormente
+
+            var qrcode = new QRCode(qrcodeContainer, {
+                text: "https://www.example.com",  // Texto ou URL que você deseja codificar
+                width: 200,  // Defina a largura do QR Code em pixels
+                height: 200, // Defina a altura do QR Code em pixels
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            var qrCodeImage = qrcodeContainer.querySelector("img"); // Seleciona a tag <img> gerada
+            qrCodeImage.style.position = "absolute"; // Ajuste a posição
+            qrCodeImage.style.top = "50%";           // Define a posição top (50% para centralizar)
+            qrCodeImage.style.left = "50%";          // Define a posição left (50% para centralizar)
+            qrCodeImage.style.transform = "translate(-50%, -50%)";
+        };
+
+        function showtudo() {
+    // Abrir o modal quando clicar em "Adicione Produtos"
+    modal.style.display = "block";
+}
+
+var span = document.getElementsByClassName("close")[0]; // Seleciona o primeiro elemento com a classe "close" (o "X")
+
+
+
+// Fechar o modal ao clicar no "X" (botão de fechar)
+span.onclick = function() { 
+    modal.style.display = "none"; 
+};
+
+// Fechar o modal ao clicar fora dele
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
+
+
+        /// Função para salvar o produto
+document.getElementById("addProductForm").onsubmit = function(event) {
+    event.preventDefault(); // Impede o envio do formulário
+
+    var productName = document.getElementById("productName").value;
+    var productPrice = document.getElementById("productPrice").value;
+    var productImage = document.getElementById("productImage").files[0];
+
+    if (productImage) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            let newProduct = {
+                name: productName,
+                price: productPrice,
+                image: e.target.result // Usando o base64 da imagem
+            };
+
+            // Adicionar ao array de produtos (simulando banco de dados)
+            products.push(newProduct);
+
+            // Atualizar a interface de produtos
+            addDataToHTML();
+
+            // Fechar o modal após adicionar
+            modal.style.display = "none";
+        };
+
+        reader.readAsDataURL(productImage);
+    }
+};
 
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </body>
 </html>

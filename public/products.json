@@ -12,47 +12,6 @@
         "price": 25,
         "image": "img/2.png",
         "description": "Sushi de salmão defumado com cream cheese e cebolinha, perfeito para uma refeição deliciosa e leve."
-    },
-    {
-        "id": 3,
-        "name":" Sushi Especial 03",
-        "price": 29,
-        "image": "img/3.png",
-        "description": "Rolinhos de sushi com camarão empanado e manga, combinando crocância e sabor doce em um só prato."
-    },
-    {
-        "id": 4,
-        "name":" Sushi Especial 04",
-        "price": 20,
-        "image": "img/4.png",
-        "description": "Sushi vegetariano com pepino, cenoura e abacate, ideal para quem busca uma opção saudável e saborosa."
-    },
-    {
-        "id": 5,
-        "name":" Sushi Especial 05",
-        "price": 30,
-        "image": "img/5.png",
-        "description": "Sushi de atum picante com jalapeño e molho especial, perfeito para os amantes de sabores intensos."
-    },
-    {
-        "id": 6,
-        "name":" Sushi Especial 06",
-        "price": 20,
-        "image": "img/6.png",
-        "description": "Sushi de salmão com maracujá, uma combinação exótica de sabores cítricos e frescos."
-    },
-    {
-        "id": 7,
-        "name":" Sushi Especial 07",
-        "price": 20,
-        "image": "img/7.png",
-        "description": "Rolinhos de sushi com carne de caranguejo e abacate, finalizados com um toque de maionese japonesa."
-    },
-    {
-        "id": 8,
-        "name":" Sushi Especial 08",
-        "price": 20,
-        "image": "img/8.png",
-        "description": "Sushi de enguia com molho teriyaki, uma deliciosa combinação de sabores adocicados e defumados."
     }
+
 ]
